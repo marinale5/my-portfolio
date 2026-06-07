@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alexandra Marin's portfolio — Biological Sciences student at Northwestern University with expertise in biostatistics, genomics, and data science." />
+  <meta name="theme-color" content="#26215C" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Alexandra Marin — Portfolio" />
+  <meta property="og:description" content="Biostatistics, genomics, and public health research portfolio" />
+  <meta property="og:url" content="https://marinale5.github.io/my-portfolio/" />
+  
   <title>Alexandra Marin — Portfolio</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -130,6 +142,7 @@
     /* LAYOUT */
     .section { display: none; }
     .section.visible { display: block; }
+    .section[aria-hidden="true"] { display: none; }
     .content { padding: 2.5rem 2.5rem; max-width: 760px; }
 
     /* STAT CARDS */
@@ -183,7 +196,7 @@
     .port-card-type { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple-600); margin-bottom: 7px; }
     .port-card-title { font-family: 'Lora', serif; font-size: 16px; font-weight: 400; margin-bottom: 7px; line-height: 1.35; }
     .port-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
-    .port-card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 11px; }
+    .port-card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 11px; role: list; }
     .port-tag { font-size: 11px; padding: 3px 9px; border-radius: 10px; background: var(--purple-50); color: var(--purple-800); }
     .code-methods { margin-top: 13px; padding-top: 11px; border-top: 0.5px solid var(--border); }
     .code-methods-label {
@@ -239,11 +252,15 @@
     .contact-row i { font-size: 18px; color: var(--purple-600); width: 20px; text-align: center; }
     .contact-label { font-size: 13px; color: var(--text-secondary); min-width: 80px; }
     .contact-value { font-size: 13px; color: var(--text-primary); }
-    .contact-value a { color: var(--purple-600); text-decoration: none; }
-    .contact-value a:hover { text-decoration: underline; }
+    .contact-value a { color: var(--purple-600); text-decoration: none; transition: text-decoration 0.15s; }
+    .contact-value a:hover, .contact-value a:focus { text-decoration: underline; outline: 2px solid var(--purple-400); outline-offset: 2px; }
 
     /* ABOUT PROSE */
     .prose { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+
+    /* FOCUS STATES */
+    .nav-link:focus { outline: 2px solid var(--purple-200); outline-offset: 2px; }
+    button:focus { outline: 2px solid var(--purple-200); outline-offset: 2px; }
 
     @media (max-width: 640px) {
       .nav { padding: 1rem 1.25rem; }
@@ -256,10 +273,10 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <span class="nav-name">Alexandra Marin</span>
-  <div class="nav-links">
-    <button class="nav-link active" onclick="showSection('about', this)">About</button>
+  <div class="nav-links" role="list">
+    <button class="nav-link active" onclick="showSection('about', this)" aria-current="page">About</button>
     <button class="nav-link" onclick="showSection('resume', this)">Resume</button>
     <button class="nav-link" onclick="showSection('portfolio', this)">Portfolio</button>
     <button class="nav-link" onclick="showSection('coursework', this)">Coursework</button>
@@ -271,8 +288,8 @@
   <div class="hero-inner">
     <div class="hero-tag">Northwestern University · Class of 2026</div>
     <h1 class="hero-name">Alexandra Marin</h1>
-    <p class="hero-bio">Biological Sciences student with a Data Science minor, interested in public health research, genomics, and applying statistical methods to questions in ecology, cancer care, and human health.</p>
-    <div class="hero-pills">
+    <p class="hero-bio">Biological Sciences student with a Data Science minor, interested in public health research, genomics, and applying statistical methods to questions in ecology, cancer care, and infectious disease.</p>
+    <div class="hero-pills" role="list">
       <span class="pill purple">Biostatistics</span>
       <span class="pill purple">Genomics</span>
       <span class="pill purple">Public Health</span>
@@ -284,241 +301,279 @@
   </div>
 </div>
 
-<!-- ABOUT -->
-<div class="section visible" id="section-about">
-  <div class="content">
-    <div class="resume-section">
-      <div class="resume-section-title">About this site</div>
-      <p class="prose">This is my academic and professional portfolio — housing my resume, data science and biostatistics work, annotated code, coursework, and ongoing explorations in genomics and public health datasets.</p>
-      <p class="prose">I am currently a research assistant on the STELLAR Pragmatic Trial at Northwestern Feinberg School of Medicine and a teaching assistant for Statistics 201 (Introduction to Programming). Graduating June 2026.</p>
-    </div>
-    <div class="resume-section">
-      <div class="resume-section-title">Highlights</div>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-num">3.51</div><div class="stat-label">GPA · Northwestern</div></div>
-        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Active research roles</div></div>
-        <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Relevant courses</div></div>
+<main>
+  <!-- ABOUT -->
+  <div class="section visible" id="section-about" aria-hidden="false">
+    <div class="content">
+      <div class="resume-section">
+        <h2 class="resume-section-title">About this site</h2>
+        <p class="prose">This is my academic and professional portfolio — housing my resume, data science and biostatistics work, annotated code, coursework, and ongoing explorations in genomics and public health. All projects include reproducible code and detailed methodology.</p>
+        <p class="prose">I am currently a research assistant on the STELLAR Pragmatic Trial at Northwestern Feinberg School of Medicine and a teaching assistant for Statistics 201 (Introduction to Programming and Data Analysis). I'm passionate about using data to solve real-world problems in public health and genomics.</p>
+      </div>
+      <div class="resume-section">
+        <h3 class="resume-section-title">Highlights</h3>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-num">3.51</div><div class="stat-label">GPA · Northwestern</div></div>
+          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Active research roles</div></div>
+          <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Relevant courses</div></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- RESUME -->
-<div class="section" id="section-resume">
-  <div class="content">
-    <div class="resume-section">
-      <div class="resume-section-title">Education</div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">Northwestern University</span>
-          <span class="resume-item-date">Expected June 2026</span>
+  <!-- RESUME -->
+  <div class="section" id="section-resume" aria-hidden="true">
+    <div class="content">
+      <div class="resume-section">
+        <h2 class="resume-section-title">Education</h2>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Northwestern University</span>
+            <span class="resume-item-date">Expected June 2026</span>
+          </div>
+          <div class="resume-item-org">BA Biological Sciences · Data Science Minor · GPA 3.51/4.00</div>
         </div>
-        <div class="resume-item-org">BA Biological Sciences · Data Science Minor · GPA 3.54/4.00</div>
       </div>
-    </div>
 
-    <div class="resume-section">
-      <div class="resume-section-title">Research Experience</div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">STELLAR Pragmatic Trial — Undergraduate Research Assistant</span>
-          <span class="resume-item-date">Jan 2026 – Present</span>
+      <div class="resume-section">
+        <h2 class="resume-section-title">Research Experience</h2>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">STELLAR Pragmatic Trial — Undergraduate Research Assistant</span>
+            <span class="resume-item-date">Jan 2026 – Present</span>
+          </div>
+          <div class="resume-item-org">Northwestern Feinberg School of Medicine · Dept. of Preventive Medicine</div>
+          <ul class="resume-bullets">
+            <li>Supported outreach for the Scalable TELeheaLth Cancer CARe (STELLAR) trial (P50 CA271353-01)</li>
+            <li>Conducted participant screening interviews on cancer history and health-risk behaviors</li>
+            <li>Managed participant processing using REDCap and Study Tracker</li>
+            <li>Updated study protocol documentation for IRB submission; created research-backed infographic for participant outreach</li>
+          </ul>
         </div>
-        <div class="resume-item-org">Northwestern Feinberg School of Medicine · Dept. of Preventive Medicine</div>
-        <ul class="resume-bullets">
-          <li>Supported outreach for the Scalable TELeheaLth Cancer CARe (STELLAR) trial (P50 CA271353-01)</li>
-          <li>Principal Investigators: Brian Hitsman, PhD (Contact); Sofia Garcia, PhD; Siobhan Phillips, PhD; Bonnie Spring, PhD.</li>
-          <li>Conducted participant screening interviews on cancer history and health-risk behaviors</li>
-          <li>Managed participant processing using REDCap and Study Tracker</li>
-          <li>Updated study protocol documentation for IRB submission; created research-backed infographic for participant outreach</li>
-        </ul>
       </div>
-    </div>
 
-    <div class="resume-section">
-      <div class="resume-section-title">Professional Experience</div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">Undergraduate Teaching Assistant — Statistics 201</span>
-          <span class="resume-item-date">Jan 2026 – Present</span>
+      <div class="resume-section">
+        <h2 class="resume-section-title">Professional Experience</h2>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Undergraduate Teaching Assistant — Statistics 201</span>
+            <span class="resume-item-date">Jan 2026 – Present</span>
+          </div>
+          <div class="resume-item-org">Northwestern University Muntz Lassonde TA Program</div>
+          <ul class="resume-bullets">
+            <li>Held office hours supporting students in Python and R (Jupyter Notebook, RStudio)</li>
+            <li>Graded homework coding assignments with written feedback</li>
+          </ul>
         </div>
-        <div class="resume-item-org">Northwestern University Muntz Lassonde TA Program</div>
-        <ul class="resume-bullets">
-          <li>Held office hours supporting students in Python and R (Jupyter Notebook, RStudio)</li>
-          <li>Graded homework coding assignments with written feedback</li>
-        </ul>
-      </div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">Field Technician and Testing Intern</span>
-          <span class="resume-item-date">Jun – Aug 2025</span>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Field Technician and Testing Intern</span>
+            <span class="resume-item-date">Jun – Aug 2025</span>
+          </div>
+          <div class="resume-item-org">FujiClean USA · Suffolk County, NY</div>
+          <ul class="resume-bullets">
+            <li>Assisted with installation and O&amp;M services for 15+ clients daily; conducted pH, ammonia, and pressure gauge testing</li>
+            <li>Maintained Excel databases across multiple states; coordinated lab sample logistics via Slack and Dropbox</li>
+            <li>Developed ammonia sampling case studies in RStudio; completed Wetlands Management certification (UIUC)</li>
+          </ul>
         </div>
-        <div class="resume-item-org">FujiClean USA · Suffolk County, NY</div>
-        <ul class="resume-bullets">
-          <li>Assisted with installation and O&M services for 15+ clients daily; conducted pH, ammonia, and pressure gauge testing</li>
-          <li>Maintained Excel databases across multiple states; coordinated lab sample logistics via Slack and Dropbox</li>
-          <li>Developed ammonia sampling case studies in RStudio; completed Wetlands Management certification (UIUC)</li>
-        </ul>
-      </div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">Business Operations Attendant</span>
-          <span class="resume-item-date">Sep 2024 – Present</span>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Business Operations Attendant</span>
+            <span class="resume-item-date">Sep 2024 – Present</span>
+          </div>
+          <div class="resume-item-org">Northwestern University Norris Center</div>
+          <ul class="resume-bullets">
+            <li>Processed 1,000+ accounts receivables; prepared 2,000+ invoices using Microsoft Office and accounting systems</li>
+            <li>Supervised and trained new workers; created 3+ training videos and 3 new operational workflows</li>
+            <li>Designed 2 reconciliation systems for vendor revenue analytics; established monthly audit process</li>
+          </ul>
         </div>
-        <div class="resume-item-org">Northwestern University Norris Center</div>
-        <ul class="resume-bullets">
-          <li>Processed 1,000+ accounts receivables; prepared 2,000+ invoices using Microsoft Office and accounting systems</li>
-          <li>Supervised and trained new workers; created 3+ training videos and 3 new operational workflows</li>
-          <li>Designed 2 reconciliation systems for vendor revenue analytics; established monthly audit process</li>
-        </ul>
       </div>
-    </div>
 
-    <div class="resume-section">
-      <div class="resume-section-title">Leadership</div>
-      <div class="resume-item">
-        <div class="resume-item-header">
-          <span class="resume-item-title">VP, Treasurer & PR Officer — Soul4Real A Cappella</span>
-          <span class="resume-item-date">Apr 2024 – Jun 2025</span>
-        </div>,
-        <div class="resume-item-org">Northwestern University</div>
-        <ul class="resume-bullets">
-          <li>Allocated $2,000+ in group funds; maintained group ledger with quarterly audits</li>
-          <li>Managed social media outreach using Canva; collaborated with university financial departments</li>
-        </ul>
+      <div class="resume-section">
+        <h2 class="resume-section-title">Leadership</h2>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">VP, Treasurer &amp; PR Officer — Soul4Real A Cappella</span>
+            <span class="resume-item-date">Apr 2024 – Jun 2025</span>
+          </div>
+          <div class="resume-item-org">Northwestern University</div>
+          <ul class="resume-bullets">
+            <li>Allocated $2,000+ in group funds; maintained group ledger with quarterly audits</li>
+            <li>Managed social media outreach using Canva; collaborated with university financial departments</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="resume-section">
-      <div class="resume-section-title">Skills</div>
-      <div class="skills-grid">
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Excel</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">REDCap</span>
-        <span class="skill-tag">Canva</span>
-        <span class="skill-tag">Data Wrangling</span>
-        <span class="skill-tag">Data Visualization</span>
-        <span class="skill-tag">Machine Learning in R</span>
-        <span class="skill-tag">Cognos Reporting</span>
-        <span class="skill-tag">SmartSheet</span>
-        <span class="skill-tag">Mazévo</span>
-        <span class="skill-tag">Spanish (Intermediate)</span>
+      <div class="resume-section">
+        <h2 class="resume-section-title">Skills</h2>
+        <div class="skills-grid">
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">REDCap</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Data Wrangling</span>
+          <span class="skill-tag">Data Visualization</span>
+          <span class="skill-tag">Machine Learning in R</span>
+          <span class="skill-tag">Cognos Reporting</span>
+          <span class="skill-tag">SmartSheet</span>
+          <span class="skill-tag">Mazévo</span>
+          <span class="skill-tag">Spanish (Intermediate)</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- PORTFOLIO -->
-<div class="section" id="section-portfolio">
-  <div class="content">
-    <div class="portfolio-intro">
-      Each project includes a summary, tags for tools and methods, and a <strong>Code &amp; Methods</strong> section — where data pipelines, annotated R/Python scripts, and key outputs will live as projects are completed.
-    </div>
-    <div class="portfolio-grid">
+  <!-- PORTFOLIO -->
+  <div class="section" id="section-portfolio" aria-hidden="true">
+    <div class="content">
+      <div class="portfolio-intro">
+        Each project includes a summary, tags for tools and methods, and a <strong>Code &amp; Methods</strong> section — where data pipelines, annotated R/Python scripts, and key outputs will live as the portfolio develops.
+      </div>
+      <div class="portfolio-grid">
 
-
-      <div class="port-card">
-        <div class="port-card-type">Research · Communication</div>
-        <div class="port-card-title">STELLAR Trial Outreach Infographic</div>
-        <div class="port-card-desc">Research-backed visual submitted for IRB approval to support cancer care telehealth trial recruitment efforts.</div>
-        <div class="port-card-tags">
-          <span class="port-tag">Canva</span>
-          <span class="port-tag">IRB</span>
-          <span class="port-tag">Science comm.</span>
+        <div class="port-card">
+          <div class="port-card-type">Public Health · Environmental</div>
+          <div class="port-card-title">Ammonia Sampling in Suffolk County</div>
+          <div class="port-card-desc">Case study analyzing ammonia levels across FujiClean USA wastewater treatment sites, developed during internship fieldwork.</div>
+          <div class="port-card-tags" role="list">
+            <span class="port-tag">RStudio</span>
+            <span class="port-tag">Environmental data</span>
+            <span class="port-tag">Case study</span>
+          </div>
+          <div class="code-methods">
+            <div class="code-methods-label"><i class="ti ti-code" aria-hidden="true" style="font-size:13px;"></i> Code &amp; methods</div>
+            <div class="code-stub">
+              # Data pipeline: field readings → cleaned CSV<br>
+              # Ammonia trend analysis + site comparison<br>
+              # Output: summary report + plots
+            </div>
+          </div>
         </div>
-        <div class="code-methods">
-          <div class="code-methods-label"><i class="ti ti-code" aria-hidden="true" style="font-size:13px;"></i> Code &amp; methods</div>
-          <div class="code-stub placeholder">No pipeline — design-based deliverable</div>
+
+        <div class="port-card">
+          <div class="port-card-type">Research · Communication</div>
+          <div class="port-card-title">STELLAR Trial Outreach Infographic</div>
+          <div class="port-card-desc">Research-backed visual submitted for IRB approval to support cancer care telehealth trial recruitment efforts.</div>
+          <div class="port-card-tags" role="list">
+            <span class="port-tag">Canva</span>
+            <span class="port-tag">IRB</span>
+            <span class="port-tag">Science comm.</span>
+          </div>
+          <div class="code-methods">
+            <div class="code-methods-label"><i class="ti ti-code" aria-hidden="true" style="font-size:13px;"></i> Code &amp; methods</div>
+            <div class="code-stub placeholder">No pipeline — design-based deliverable</div>
+          </div>
+        </div>
+
+        <div class="port-card add-card">
+          <i class="ti ti-chart-dots" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
+          <span class="add-label">Biostats portfolio project</span>
+          <span class="add-sub">R · regression · visualization</span>
+        </div>
+
+        <div class="port-card add-card">
+          <i class="ti ti-dna" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
+          <span class="add-label">Genomics dataset exploration</span>
+          <span class="add-sub">functional genomics · R/Python</span>
+        </div>
+
+        <div class="port-card add-card">
+          <i class="ti ti-database" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
+          <span class="add-label">Public health dataset</span>
+          <span class="add-sub">CDC / NHANES · data pipeline</span>
+        </div>
+
+        <div class="port-card add-card">
+          <i class="ti ti-flask" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
+          <span class="add-label">Ecology or physiology project</span>
+          <span class="add-sub">modeling · simulation</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSEWORK -->
+  <div class="section" id="section-coursework" aria-hidden="true">
+    <div class="content">
+      <h2 class="course-divider">Biological Sciences</h2>
+      <div class="course-grid">
+        <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Human Physiology</div></div>
+        <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Biophysics</div></div>
+        <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Immunology</div></div>
+        <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Microbiology</div></div>
+        <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Functional &amp; Human Genomics</div></div>
+        <div class="course-card"><div class="course-area bio">Ecology</div><div class="course-name">Critical Topics in Ecology and Conservation</div></div>
+        <div class="course-card"><div class="course-area bio">Modeling</div><div class="course-name">Modeling Biological Dynamics</div></div>
+        <div class="course-card"><div class="course-area bio">Ethics</div><div class="course-name">Bioethics</div></div>
+      </div>
+      <h3 class="course-divider">Data Science &amp; Statistics</h3>
+      <div class="course-grid">
+        <div class="course-card"><div class="course-area data">Data Science</div><div class="course-name">Data Science in R</div></div>
+        <div class="course-card"><div class="course-area data">Data Science</div><div class="course-name">Data Visualization</div></div>
+        <div class="course-card"><div class="course-area data">Statistics</div><div class="course-name">Biostatistics</div></div>
+        <div class="course-card"><div class="course-area data">Statistics</div><div class="course-name">Regression Analysis</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="section-contact" aria-hidden="true">
+    <div class="content">
+      <div class="contact-card">
+        <h2 class="contact-title">Get in touch</h2>
+        <p class="contact-sub">Open to research collaborations, graduate school conversations, and opportunities in biotech, public health, or data science.</p>
+        <div class="contact-row">
+          <i class="ti ti-mail" aria-label="Email" role="img"></i>
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:alexandramarin2026@u.northwestern.edu">alexandramarin2026@u.northwestern.edu</a></span>
+        </div>
+        <div class="contact-row">
+          <i class="ti ti-phone" aria-label="Phone" role="img"></i>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">(516) 864-3190</span>
+        </div>
+        <div class="contact-row">
+          <i class="ti ti-brand-linkedin" aria-label="LinkedIn" role="img"></i>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value"><a href="https://linkedin.com/in/alexandramarin" target="_blank" rel="noopener noreferrer">linkedin.com/in/alexandramarin</a></span>
+        </div>
+        <div class="contact-row">
+          <i class="ti ti-map-pin" aria-label="Location" role="img"></i>
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Evanston, IL</span>
         </div>
       </div>
-
-      <div class="port-card add-card">
-        <i class="ti ti-chart-dots" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
-        <span class="add-label">Biostats portfolio project</span>
-        <span class="add-sub">R · regression · visualization</span>
-      </div>
-
-      <div class="port-card add-card">
-        <i class="ti ti-dna" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
-        <span class="add-label">Genomics dataset exploration</span>
-        <span class="add-sub">functional genomics · R/Python</span>
-      </div>
-
-      <div class="port-card add-card">
-        <i class="ti ti-database" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
-        <span class="add-label">Public health dataset</span>
-        <span class="add-sub">CDC / NHANES · data pipeline</span>
-      </div>
-
-      <div class="port-card add-card">
-        <i class="ti ti-flask" aria-hidden="true" style="font-size:24px; color:#888780;"></i>
-        <span class="add-label">Ecology or physiology project</span>
-        <span class="add-sub">modeling · simulation</span>
-      </div>
-
     </div>
   </div>
-</div>
+</main>
 
-<!-- COURSEWORK -->
-<div class="section" id="section-coursework">
-  <div class="content">
-    <div class="course-divider">Biological Sciences</div>
-    <div class="course-grid">
-      <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Biophysics</div></div>
-      <div class="course-card"><div class="course-area bio">Biology</div><div class="course-name">Functional &amp; Human Genomics</div></div>
-      <div class="course-card"><div class="course-area bio">Ecology</div><div class="course-name">Critical Topics in Ecology and Conservation</div></div>
-      <div class="course-card"><div class="course-area bio">Modeling</div><div class="course-name">Modeling Biological Dynamics</div></div>
-      <div class="course-card"><div class="course-area bio">Ethics</div><div class="course-name">Bioethics</div></div>
-    </div>
-    <div class="course-divider">Data Science &amp; Statistics</div>
-    <div class="course-grid">
-      <div class="course-card"><div class="course-area data">Data Science</div><div class="course-name">Data Science in R</div></div>
-      <div class="course-card"><div class="course-area data">Data Science</div><div class="course-name">Data Visualization</div></div>
-      <div class="course-card"><div class="course-area data">Statistics</div><div class="course-name">Biostatistics</div></div>
-      <div class="course-card"><div class="course-area data">Statistics</div><div class="course-name">Regression Analysis</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div class="section" id="section-contact">
-  <div class="content">
-    <div class="contact-card">
-      <div class="contact-title">Get in touch</div>
-      <p class="contact-sub">Open to research collaborations and opportunities in biotech, public health, or data science.</p>
-      <div class="contact-row">
-        <i class="ti ti-mail" aria-hidden="true"></i>
-        <span class="contact-label">Email</span>
-        <span class="contact-value"><a href="mailto:alexandramarin2026@u.northwestern.edu">alexandramarin2026@u.northwestern.edu</a></span>
-      </div>
-      <div class="contact-row">
-        <i class="ti ti-phone" aria-hidden="true"></i>
-        <span class="contact-label">Phone</span>
-        <span class="contact-value">(516) 864-3190</span>
-      </div>
-      <div class="contact-row">
-        <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value"><a href="https://www.linkedin.com/in/amarin26/" target="_blank">linkedin.com/in/amarin26/</a></span>
-      </div>
-      <div class="contact-row">
-        <i class="ti ti-map-pin" aria-hidden="true"></i>
-        <span class="contact-label">Location</span>
-        <span class="contact-value">New York, NY</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
+<script defer>
   function showSection(name, btn) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    document.getElementById('section-' + name).classList.add('visible');
+    // Hide all sections and mark as aria-hidden
+    document.querySelectorAll('.section').forEach(s => {
+      s.classList.remove('visible');
+      s.setAttribute('aria-hidden', 'true');
+    });
+    
+    // Remove active state from all nav links
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.classList.remove('active');
+      l.removeAttribute('aria-current');
+    });
+    
+    // Show target section and mark as visible
+    const targetSection = document.getElementById('section-' + name);
+    targetSection.classList.add('visible');
+    targetSection.setAttribute('aria-hidden', 'false');
+    
+    // Set active state on clicked button
     btn.classList.add('active');
+    btn.setAttribute('aria-current', 'page');
   }
 </script>
 </body>
